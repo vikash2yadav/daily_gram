@@ -49,6 +49,7 @@ exports.STATUS_MESSAGES = {
     RESET_PASSWORD_ALREADY: "You already have reset the password with this token.",
 
     EXISTS: {
+        USERNAME_OR_EMAIL: 'Username or email is already exist!',
         USER: "User already exist!",
         EMAIL: "Email is already registered!",
         EMAIL_GUEST: "It looks like you've ordered with us before! Click 'Forgot Password' to reset your password.",
@@ -57,7 +58,7 @@ exports.STATUS_MESSAGES = {
         CONTACT: "Mobile number is already exist!",
         USERNAME: "Username is already exist!",
         TITLE: "This title already exist",
-        EMAIL_ALREADY_EXISTS: "This email is already registered with another customer!",
+        EMAIL_ALREADY_EXISTS: "This email is already registered.!",
         ROLE: 'Role is already exist!'
     },
 
@@ -127,9 +128,9 @@ exports.STATUS_MESSAGES = {
     VALIDATION: {
         REQUIRED: {
             NEW_PASSWORD: "Please enter new password.",
+            CONTACT: 'Please enter contact number.',
             OTP: "Please enter otp.",
             IMAGE: "Please enter profile image.",
-            COMPANY: "Please enter company.",
             GENDER: "Please enter gender.",
             BIRTH_DATE: "Please enter birth date.",
             PIN_CODE: "Please enter pin code.",
@@ -191,7 +192,7 @@ exports.STATUS_MESSAGES = {
         LENGTH: {
             USERNAME_MIN: "Username must be minimum of 4 character long.",
             USERNAME_MAX: "Username must be maximum of 16 character long.",
-            PASSWORD: "Password must be minimum of 8 character long."
+            PASSWORD: "Password must be minimum of 6 character long."
         },
         EXISTS: {
             ROLE: "There is already one role with Same name",
@@ -202,10 +203,9 @@ exports.STATUS_MESSAGES = {
 };
 
 // File Path
-exports.PATHS = {
-    IMAGES: {
-        USERS: "/Users",
-    }
+exports.IMG_FOLDER_NAME = {
+    USER_PROFILE: '/User/Profile',
+    COVER_PROFILE: '/User/Cover'
 };
 
 // Generic Status
@@ -243,3 +243,8 @@ exports.ACCESS_TYPES = {
     WRITE: "write_access",
     DELETE: "delete_access",
 };
+
+exports.USER_ACCOUNT_TYPE = {
+    PUBLIC: 1,
+    PRIVATE: 2
+}

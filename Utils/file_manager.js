@@ -3,7 +3,6 @@ const path = require('path');
 const jimp = require('jimp');
 const sharp = require('sharp');
 const fs = require('fs');
-const { PATHS } = require('../Config/constant')
 
 class FileManager {
 
@@ -19,7 +18,7 @@ class FileManager {
         let pathToCreateFolder = PathJoin.split("/");       // convert in to array to step by step create required folder [ 'F:', 'Repo', 'Daily-Book', 'Assets', 'images', 'Admin' ]
         let folderToCreate = utilPath.join("\\");      // get util path for concate required path ----> F:\Repo\Daily-Book
         for (let i = utilPath?.length; i <= pathToCreateFolder?.length - 1; i++) {
-            folderToCreate = folderToCreate.concat("\\" + pathToCreateFolder[i])      
+            folderToCreate = folderToCreate.concat("\\" + pathToCreateFolder[i])
             if (!fs.existsSync(folderToCreate)) {               // if folder doesn't exist then create
                 fs.mkdirSync(folderToCreate);
             }
@@ -27,10 +26,23 @@ class FileManager {
         return path.join(__dirname, "../Assets/Images/" + filepath + "/")
     }
 
-    UploadImage(folderName) {
+    userUploadImage(folderName) {
         var storage = multer.diskStorage({
             destination: function (req, file, callBack) {
-                callBack(null, this.resolvePath(folderName))
+                if (req?.files) {
+                    if (file.fieldname === 'profile_image') {
+                        callBack(null, this.resolvePath('/User/Profile'));
+                    } else if (file.fieldname === 'cover_image') {
+                        callBack(null, this.resolvePath('/User/Cover'));
+                    }
+                }
+                else {
+                    if (folderName) {
+                        callBack(null, this.resolvePath(folderName))
+                    } else {
+                        callBack(null, this.resolvePath(req?.body?.folderName))
+                    }
+                }
             }.bind(this),
             filename: function (req, file, callBack) {
                 let fileName = this.getFileName(file);
@@ -68,7 +80,7 @@ class FileManager {
     }
 
     async getImageMetaData(files, filePath) {
-        
+
         filePath = this.resolvePath(filePath)
         let promises = [], extensions = []
         if (files && files != undefined && files.length > 0) {
