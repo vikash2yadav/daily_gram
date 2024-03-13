@@ -50,7 +50,7 @@ class userController {
         let data = await userModel.deleteUser(req?.params?.id);
 
         if (data?.status === STATUS_CODES?.NOT_FOUND) {
-            res.handler.validationError(undefined, STATUS_MESSAGES?.NOT_FOUND?.USER);
+            res.handler.notFound(undefined, STATUS_MESSAGES?.NOT_FOUND?.USER);
             return;
         }
 
@@ -63,7 +63,7 @@ class userController {
         let data = await userModel.getUserById(req?.params?.id);
 
         if (data?.status === STATUS_CODES?.NOT_FOUND) {
-            res.handler.validationError(undefined, STATUS_MESSAGES?.NOT_FOUND?.USER);
+            res.handler.notFound(undefined, STATUS_MESSAGES?.NOT_FOUND?.USER);
             return;
         }
 
