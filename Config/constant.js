@@ -49,6 +49,7 @@ exports.STATUS_MESSAGES = {
     RESET_PASSWORD_ALREADY: "You already have reset the password with this token.",
 
     EXISTS: {
+        ACCESS_TYPE: 'Access Type is already exist!',
         USERNAME_OR_EMAIL: 'Username or email is already exist!',
         USER: "User already exist!",
         EMAIL: "Email is already registered!",
@@ -63,6 +64,7 @@ exports.STATUS_MESSAGES = {
     },
 
     NOT_FOUND: {
+        ACCESS_TYPE: 'Access Type is not available in our system.',
         USER: "Your email address is not available in our system!",
         ROLE: "Role is not available in our system!",
         EMAIL: "Your email address is not available in our system!",
@@ -71,6 +73,7 @@ exports.STATUS_MESSAGES = {
         USER_LOOKUP: "User is not available in our system!",
         PAGE: "Page is not available in our system!",
         LEAVE_CONFIGURATION: "Leave Configuration is not available in our system!",
+        ACCESS_TYPES: 'Access type is not available in our system!'
     },
     PASSWORD: {
         MISMATCH: "Provided password do not match",
@@ -102,6 +105,11 @@ exports.STATUS_MESSAGES = {
         NOT_VERIFIED: "Your email address is not verified.",
         INACTIVE: "Your email address is not active.",
         INVALID: "Please enter valid email & password."
+    },
+    ACCESS_TYPE: {
+        ADDED: "Access type has been added successfully.",
+        UPDATED: "Access type been updated successfully.",
+        DELETED: "Access type been deleted successfully.",
     },
     ROLE: {
         ROLE_ADD: "Role has been added successfully.",

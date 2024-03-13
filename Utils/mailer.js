@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
   from: process.env.MAIL_EMAIL, // sender address
-  to: "", // list of receivers
+  to: 'yadavrohan1825@gmail.com', // list of receivers
   subject: "Welcome to Drop HRM", // Subject line
   text: "", // plain text body
 };
