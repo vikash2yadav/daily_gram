@@ -218,6 +218,10 @@ exports.IMG_FOLDER_NAME = {
 
 // Generic Status
 exports.STATUS = {
+    NO: 0,
+    YES: 1,
+    UNREAD: 0,
+    READ: 1,
     NOTDELETED: 0,
     INACTIVE: 0,
     ACTIVE: 1,
@@ -230,6 +234,14 @@ exports.STATUS = {
     TRUE: true,
     FALSE: false
 };
+
+// Notifications type
+exports.NOTIFICATION_TYPE ={
+    INFORMATION: 1,
+    SUGGESTION: 2,
+    ALERT: 3,
+    WARNING: 4
+}
 
 // User type
 exports.ROLE_TYPES = {
