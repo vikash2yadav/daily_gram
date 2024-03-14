@@ -36,19 +36,19 @@ module.exports = {
       is_like:{
         allowNull: true,
         type: Sequelize.TINYINT(1),
-        defaultValue: '1',
+        defaultValue: 1,
         comment: "0 => Not allowed 1 => allowed"
       },
       is_comment:{
         allowNull: true,
         type: Sequelize.TINYINT(1),
-        defaultValue: '1',
+        defaultValue: 1,
         comment: "0 => Not allowed 1 => allowed"
       },
       is_share:{
         allowNull: true,
         type: Sequelize.TINYINT(1),
-        defaultValue: '1',
+        defaultValue: 1,
         comment: "0 => Not allowed 1 => allowed"
       },
       status: {
