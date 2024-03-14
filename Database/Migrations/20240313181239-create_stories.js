@@ -16,7 +16,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.BIGINT(20).UNSIGNED
       },
-      content:{
+      content: {
         allowNull: false,
         type: Sequelize.STRING(500)
       },
@@ -31,6 +31,10 @@ module.exports = {
         type: Sequelize.TINYINT(1),
         defaultValue: STATUS?.NOTDELETED,
         comment: "0 => Not Deleted 1 => Deleted"
+      },
+      expired_at: {
+        allowNull: false,
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,

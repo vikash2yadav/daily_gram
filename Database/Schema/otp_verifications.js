@@ -3,39 +3,27 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class stories extends Model {
+  class otp_verifications extends Model {
     static associate(models) {
       // define association here
     }
   }
-  stories.init({
+  otp_verifications.init({
     id: {
       allowNull: false,
       autoIncrement: true,
       primaryKey: true,
       type: DataTypes.BIGINT(20).UNSIGNED
     },
+    otp: {
+      allowNull: false,
+      type: DataTypes.BIGINT(6)
+    },
     user_id: {
       allowNull: false,
       type: DataTypes.BIGINT(20).UNSIGNED
     },
-    content:{
-      allowNull: false,
-      type: DataTypes.STRING(500)
-    },
-    status: {
-      allowNull: false,
-      type: DataTypes.TINYINT(1),
-      defaultValue: STATUS?.ACTIVE,
-      comment: "0 => In Active 1 => Active"
-    },
-    is_delete: {
-      allowNull: false,
-      type: DataTypes.TINYINT(1),
-      defaultValue: STATUS?.NOTDELETED,
-      comment: "0 => Not Deleted 1 => Deleted"
-    },
-    expired_at: {
+    expired_at:{
       allowNull: false,
       type: DataTypes.DATE
     },
@@ -49,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'stories',
+    modelName: 'otp_verifications',
   });
-  return stories;
+  return otp_verifications;
 };

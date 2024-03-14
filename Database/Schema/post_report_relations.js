@@ -3,12 +3,12 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class post_reports extends Model {
+  class post_report_relations extends Model {
     static associate(models) {
       // define association here
     }
   }
-  post_reports.init({
+  post_report_relations.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'post_reports',
+    modelName: 'post_report_relations',
   });
-  return post_reports;
+  return post_report_relations;
 };
