@@ -72,6 +72,7 @@ const swaggerOptions = {
 // Serve Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+
 //server
 server.listen(PORT, () => {
     console.log(`server is running on port ${PORT}`)

@@ -64,10 +64,11 @@ exports.STATUS_MESSAGES = {
     },
 
     NOT_FOUND: {
+        USERNAME: 'Username is not available in our system.',
         ACCESS_TYPE: 'Access Type is not available in our system.',
-        USER: "Your email address is not available in our system!",
+        USER: "You are not available in our system!",
         ROLE: "Role is not available in our system!",
-        EMAIL: "Your email address is not available in our system!",
+        EMAIL: "Email is not available in our system!",
         IMAGE: "Image not available.",
         ACCOUNT: "We can't find this account",
         USER_LOOKUP: "User is not available in our system!",
@@ -96,6 +97,7 @@ exports.STATUS_MESSAGES = {
         LOGOUT: "You have been successfully logged out."
     },
     USER: {
+        REGISTERED: 'You have been registered successfully.',
         DELETED: 'User has been deleted successfully.',
         UPDATED: 'User has been updated successfully.',
         ADDED: 'User has been added successfully.',
@@ -135,6 +137,7 @@ exports.STATUS_MESSAGES = {
     },
     VALIDATION: {
         REQUIRED: {
+            PASSWORD: 'Please enter password.',
             NEW_PASSWORD: "Please enter new password.",
             CONTACT: 'Please enter contact number.',
             OTP: "Please enter otp.",
