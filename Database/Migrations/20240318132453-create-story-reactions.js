@@ -1,23 +1,16 @@
 'use strict';
-
 /** @type {import('sequelize-cli').Migration} */
-
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('post_comment_relations', {
+    await queryInterface.createTable('story_reactions', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.BIGINT(20).UNSIGNED
+        type: Sequelize.INTEGER
       },
-      post_id: {
-        allowNull: false,
-        type: Sequelize.BIGINT(20).UNSIGNED
-      },
-      user_id: {
-        allowNull: false,
-        type: Sequelize.BIGINT(20).UNSIGNED
+      firstName: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -30,6 +23,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('post_comment_relations');
+    await queryInterface.dropTable('story_reactions');
   }
 };

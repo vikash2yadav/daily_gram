@@ -4,20 +4,16 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('post_like_relations', {
+    await queryInterface.createTable('emojis', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.BIGINT(20).UNSIGNED
       },
-      post_id: {
+      emoji: {
         allowNull: false,
-        type: Sequelize.BIGINT(20).UNSIGNED
-      },
-      user_id: {
-        allowNull: false,
-        type: Sequelize.BIGINT(20).UNSIGNED
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
@@ -30,6 +26,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('post_like_relations');
+    await queryInterface.dropTable('emojis');
   }
 };

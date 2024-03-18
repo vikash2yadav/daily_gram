@@ -77,7 +77,10 @@ exports.STATUS_MESSAGES = {
         ACCESS_TYPES: 'Access type is not available in our system!',
         POST_REPORT: 'Report is not available in our system!',
         POST_COMMENT: 'Comment is not available in our system!',
-        SAVED_POST: 'Saved post is not available in our system!'
+        SAVED_POST: 'Saved post is not available in our system!',
+        POST_SHARE: "This data is not found.",
+        NOTIFICATION: 'Notification is not available in our system.',
+        EMOJI: 'Emoji is not available in our system.'
     },
     PASSWORD: {
         MISMATCH: "Provided password do not match",
@@ -128,13 +131,27 @@ exports.STATUS_MESSAGES = {
     },
     SAVED_POST:{
         ADDED: 'Post added.',
+        REMOVED: 'Post removed.'
+    },
+    POST_SHARE:{
+        ADDED: 'Post added.',
         REMOVED: 'Post removed. '
+    },
+    NOTIFICATION:{
+        ADDED: "Notification has been added successfully.",
+        UPDATED: "Notification been updated successfully.",
+        DELETED: "Notification been deleted successfully.",
     },
     ROLE: {
         ROLE_ADD: "Role has been added successfully.",
         ROLE_UPDATE: "Role has been updated successfully.",
         ROLE_DELETE: "Role has been deleted successfully.",
         ROLE_GET: "Role has been loaded successfully"
+    },
+    EMOJI:{
+        ADDED: "Emoji has been added successfully.",
+        UPDATED: "Emoji been updated successfully.",
+        DELETED: "Emoji been deleted successfully.",
     },
     REQUEST: {
         LIST: "Request has been loaded successfully.",
