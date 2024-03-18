@@ -3,12 +3,12 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class post_share_relations extends Model {
+  class post_likes extends Model {
     static associate(models) {
       // define association here
     }
   }
-  post_share_relations.init({
+  post_likes.init({
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     sequelize,
-    modelName: 'post_share_relations',
+    modelName: 'post_likes',
   });
-  return post_share_relations;
+  return post_likes;
 };

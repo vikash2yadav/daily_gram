@@ -1,32 +1,23 @@
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
-const {STATUS} = require('../../Config/constant');
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('post_comments', {
+    await queryInterface.createTable('post_likes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.BIGINT(20).UNSIGNED
       },
-      description: {
+      post_id: {
         allowNull: false,
-        type: Sequelize.TEXT
+        type: Sequelize.BIGINT(20).UNSIGNED
       },
-      status: {
+      user_id: {
         allowNull: false,
-        type: Sequelize.TINYINT(1),
-        defaultValue: STATUS?.ACTIVE,
-        comment: "0 => In Active 1 => Active"
-      },
-      is_delete: {
-        allowNull: false,
-        type: Sequelize.TINYINT(1),
-        defaultValue: STATUS?.NOTDELETED,
-        comment: "0 => Not Deleted 1 => Deleted"
+        type: Sequelize.BIGINT(20).UNSIGNED
       },
       createdAt: {
         allowNull: false,
@@ -39,6 +30,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('post_comments');
+    await queryInterface.dropTable('post_likes');
   }
 };

@@ -16,14 +16,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.BIGINT(20).UNSIGNED
     },
-    post_id: {
-      allowNull: false,
-      type: DataTypes.BIGINT(20)
-    },
-    added_by: {
-      allowNull: false,
-      type: DataTypes.BIGINT(20)
-    },
     description: {
       allowNull: false,
       type: DataTypes.TEXT
