@@ -74,7 +74,10 @@ exports.STATUS_MESSAGES = {
         USER_LOOKUP: "User is not available in our system!",
         PAGE: "Page is not available in our system!",
         LEAVE_CONFIGURATION: "Leave Configuration is not available in our system!",
-        ACCESS_TYPES: 'Access type is not available in our system!'
+        ACCESS_TYPES: 'Access type is not available in our system!',
+        POST_REPORT: 'Report is not available in our system!',
+        POST_COMMENT: 'Comment is not available in our system!',
+        SAVED_POST: 'Saved post is not available in our system!'
     },
     PASSWORD: {
         MISMATCH: "Provided password do not match",
@@ -112,6 +115,20 @@ exports.STATUS_MESSAGES = {
         ADDED: "Access type has been added successfully.",
         UPDATED: "Access type been updated successfully.",
         DELETED: "Access type been deleted successfully.",
+    },
+    POST_REPORT:{
+        ADDED: "Report has been added successfully.",
+        UPDATED: "Report been updated successfully.",
+        DELETED: "Report been deleted successfully.",
+    },
+    POST_COMMENT:{
+        ADDED: "Comment has been added successfully.",
+        UPDATED: "Comment been updated successfully.",
+        DELETED: "Comment been deleted successfully.",
+    },
+    SAVED_POST:{
+        ADDED: 'Post added.',
+        REMOVED: 'Post removed. '
     },
     ROLE: {
         ROLE_ADD: "Role has been added successfully.",
