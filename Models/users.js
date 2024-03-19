@@ -10,6 +10,15 @@ const mailer = new (require("../Utils/mailer"))();
 
 class userModel {
 
+    // Get user info by token
+    async getUserTokenInfo(access_token) {
+        return await userTokenSchema.findOne({
+            where: {
+                access_token,
+            },
+        });
+    }
+
     // Add User
     async addUser(bodyData) {
 
@@ -200,7 +209,7 @@ class userModel {
 
         return await userSchema.findAndCountAll({
             where: {
-                [SEQUELIZE.Op.or]: [
+                [SEQUELIZE.Op.and]: [
                     { status: STATUS?.ACTIVE },
                     { is_delete: STATUS?.NOTDELETED }
                 ]
@@ -235,19 +244,19 @@ class userModel {
             };
         }
 
-        // // Check username is registered?
-        // let checkUsername = await userSchema.findOne({
-        //     where: {
-        //         username: bodyData?.username,
-        //     },
-        // });
+        // Check username is registered?
+        let checkUsername = await userSchema.findOne({
+            where: {
+                username: bodyData?.username,
+            },
+        });
 
-        // if (checkUsername) {
-        //     return {
-        //         status: STATUS_CODES.ALREADY_REPORTED,
-        //         message: STATUS_MESSAGES.EXISTS.USERNAME,
-        //     };
-        // }
+        if (checkUsername) {
+            return {
+                status: STATUS_CODES.ALREADY_REPORTED,
+                message: STATUS_MESSAGES.EXISTS.USERNAME,
+            };
+        }
 
         // Hashing password
         bodyData.password = await bcrypt.hash(bodyData?.password, 10);
@@ -318,12 +327,12 @@ class userModel {
         let accessToken = jwt.sign({ email: checkEmail?.email }, process.env.SECRET_KEY);
 
         // Store Token In Token Table
-        await userTokenSchema.create({
+        let data = await userTokenSchema.create({
             access_token: accessToken,
             user_id: checkEmail?.id,
         });
 
-        return true;
+        return { data, token: accessToken };
     }
 
     //Forgot Password
@@ -339,11 +348,11 @@ class userModel {
         let checkStatus = await userSchema.findOne({
             where: {
                 email: bodyData?.email,
-                status: STATUS.ACTIVE
+                status: STATUS.NOTDELETED
             }
         })
 
-        if (!checkStatus) {
+        if (checkStatus) {
             return {
                 status: STATUS_CODES.NOT_FOUND,
                 message: STATUS_MESSAGES.USER.INACTIVE
@@ -393,24 +402,36 @@ class userModel {
             order: [['createdAt', 'DESC']],
         })
 
-        let transformedArray = [];
-        for (const item of getOtp) {
-            let compareOTP = await bcrypt.compare(otp, item?.otp);
-            if (compareOTP == true) {
-                transformedArray.push(item);
-                break;
+        if (getOtp) {
+            let transformedArray = [];
+            for (const item of getOtp) {
+                let compareOTP = await bcrypt.compare(otp, item?.otp);
+                if (compareOTP == true) {
+                    transformedArray.push(item);
+                    break;
+                }
+                else {
+                    return {
+                        status: STATUS_CODES.NOT_FOUND
+                    };
+                }
             }
-            else {
+            let oldOtp = transformedArray[0]?.otp;
+
+            var olddate = transformedArray[0]?.expired_at;
+
+            if (date > olddate) {
+
+                await userOtpVerificationSchema.destroy({
+                    where: {
+                        otp: oldOtp
+                    }
+                });
+
                 return {
-                    status: STATUS_CODES.NOT_FOUND
-                };
+                    status: STATUS_CODES.NOT_ACCEPTABLE
+                }
             }
-        }
-        let oldOtp = transformedArray[0]?.otp;
-
-        var olddate = transformedArray[0]?.expired_at;
-
-        if (date > olddate) {
 
             await userOtpVerificationSchema.destroy({
                 where: {
@@ -419,18 +440,8 @@ class userModel {
             });
 
             return {
-                status: STATUS_CODES.NOT_ACCEPTABLE
+                user_id: transformedArray[0]?.user_id
             }
-        }
-
-        await userOtpVerificationSchema.destroy({
-            where: {
-                otp: oldOtp
-            }
-        });
-
-        return {
-            user_id: transformedArray[0]?.user_id
         }
     }
 
@@ -451,7 +462,7 @@ class userModel {
 
             let checkStatus = await userSchema.findOne({
                 where: {
-                    email: bodyData?.email,
+                    id: id,
                     status: STATUS.ACTIVE
                 }
             })

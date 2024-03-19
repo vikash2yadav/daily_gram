@@ -49,7 +49,7 @@ exports.STATUS_MESSAGES = {
     RESET_PASSWORD_ALREADY: "You already have reset the password with this token.",
 
     EXISTS: {
-        ACCESS_TYPE: 'Access Type is already exist!',
+        ACCOUNT_TYPE: 'Account Type is already exist!',
         USERNAME_OR_EMAIL: 'Username or email is already exist!',
         USER: "User already exist!",
         EMAIL: "Email is already registered!",
@@ -65,7 +65,7 @@ exports.STATUS_MESSAGES = {
 
     NOT_FOUND: {
         USERNAME: 'Username is not available in our system.',
-        ACCESS_TYPE: 'Access Type is not available in our system.',
+        ACCOUNT_TYPE: 'Account Type is not available in our system.',
         USER: "You are not available in our system!",
         ROLE: "Role is not available in our system!",
         EMAIL: "Email is not available in our system!",
@@ -103,6 +103,7 @@ exports.STATUS_MESSAGES = {
         LOGOUT: "You have been successfully logged out."
     },
     USER: {
+        SIGN_UP: 'You have signed up successfully.',
         REGISTERED: 'You have been registered successfully.',
         DELETED: 'User has been deleted successfully.',
         UPDATED: 'User has been updated successfully.',
@@ -114,10 +115,10 @@ exports.STATUS_MESSAGES = {
         INACTIVE: "Your email address is not active.",
         INVALID: "Please enter valid email & password."
     },
-    ACCESS_TYPE: {
-        ADDED: "Access type has been added successfully.",
-        UPDATED: "Access type been updated successfully.",
-        DELETED: "Access type been deleted successfully.",
+    ACCOUNT_TYPE: {
+        ADDED: "Account type has been added successfully.",
+        UPDATED: "Account type been updated successfully.",
+        DELETED: "Account type been deleted successfully.",
     },
     POST_REPORT:{
         ADDED: "Report has been added successfully.",
@@ -171,6 +172,9 @@ exports.STATUS_MESSAGES = {
     },
     VALIDATION: {
         REQUIRED: {
+            DESCRIPTION: 'Please, enter description.',
+            USER: 'Please, enter user id',
+            ACCOUNT_TYPE: "Please, enter Account type.",
             PASSWORD: 'Please enter password.',
             NEW_PASSWORD: "Please enter new password.",
             CONTACT: 'Please enter contact number.',
@@ -216,6 +220,7 @@ exports.STATUS_MESSAGES = {
             COUNTRY: "Please enter country",
             STATE: "Please enter state",
             INVALID_EMAIL: "Invalid email address",
+            USERNAMESIZE: "Username should be minimum 6 character",
             ROLE: {
                 ID: "Please enter role",
                 TITLE: "Please enter role name",

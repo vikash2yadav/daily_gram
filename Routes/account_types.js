@@ -1,19 +1,24 @@
 const router = require('express').Router();
-const accessTypeController = new(require('../Controllers/access_types'));
+const accountTypeController = new(require('../Controllers/account_types'));
+const { body } = require('express-validator');
+const { STATUS_MESSAGES } = require('../Config/constant');
+const validate = (require('../Middleware/validator'))?.validate;
 
-// Add access type
-router.route('/add').post(accessTypeController.addAccessType);
+// Add account type
+router.route('/add').post(validate([body('type').notEmpty().withMessage(STATUS_MESSAGES?.VALIDATION?.REQUIRED?.ACCOUNT_TYPE),
+]), accountTypeController.addAccountType);
 
-// Update access type
-router.route('/update').put(accessTypeController.updateAccessType);
+// Update account type
+router.route('/update').put(validate([body('type').notEmpty().withMessage(STATUS_MESSAGES?.VALIDATION?.REQUIRED?.ACCOUNT_TYPE),
+]), accountTypeController.updateAccountType);
 
-// Delete access type
-router.route('/delete/:id').delete(accessTypeController.deleteAccessType);
+// Delete account type
+router.route('/delete/:id').delete(accountTypeController.deleteAccountType);
 
-// Get access type by id
-router.route('/:id').get(accessTypeController.getAccessTypeById);
+// Get account type by id
+router.route('/get/:id').get(accountTypeController.getAccountTypeById);
 
-// Get all list access type
-router.route('/list').post(accessTypeController.getAllAccessTypeList);
+// Get all list account type
+router.route('/get/list').post(accountTypeController.getAllAccountTypeList);
 
 module.exports = router;

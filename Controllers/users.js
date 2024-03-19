@@ -104,7 +104,7 @@ class userController {
                 return;
             }
 
-            res.handler.success(data, STATUS_MESSAGES.USER.REGISTERED);
+            res.handler.success(data, STATUS_MESSAGES.USER.SIGN_UP);
 
         } catch (error) {
             res.handler.serverError(error)
