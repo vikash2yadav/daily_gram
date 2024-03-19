@@ -1,22 +1,10 @@
-const { STATUS_CODES, STATUS_MESSAGES } = require("../Config/constant");
+const { STATUS_CODES, STATUS_MESSAGES, STATUS } = require("../Config/constant");
 const { notifications: notificationSchema } = require("../Database/Schema");
 
 class notificationModel {
 
     // Add notification
     async addNotification(bodyData) {
-
-        let data = await notificationSchema.findOne({
-            where: {
-                type: bodyData?.type
-            }
-        })
-
-        if (data) {
-            return {
-                status: STATUS_CODES?.ALREADY_REPORTED
-            }
-        }
 
         // Create notification
         return await notificationSchema.create(bodyData);
@@ -28,7 +16,8 @@ class notificationModel {
         // Check Exist notification Is Or Not
         let data = await notificationSchema.findOne({
             where: {
-                id: bodyData?.id
+                id: bodyData?.id,
+                is_delete: STATUS.NOTDELETED
             },
         });
 
@@ -53,6 +42,7 @@ class notificationModel {
         let data = await notificationSchema.findOne({
             where: {
                 id,
+                is_delete: STATUS.NOTDELETED
             },
         });
 
@@ -63,7 +53,7 @@ class notificationModel {
         }
 
         // Delete notification
-        return await notificationSchema.destroy({
+        return await notificationSchema.update({ is_delete: STATUS.DELETED },{ 
             where: {
                 id,
             },
@@ -77,6 +67,7 @@ class notificationModel {
         let data = await notificationSchema.findOne({
             where: {
                 id,
+                is_delete: STATUS.NOTDELETED
             },
         });
 

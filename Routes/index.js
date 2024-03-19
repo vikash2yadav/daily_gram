@@ -8,4 +8,10 @@ module.exports = (app) => {
 
     // Account type route
     app.use("/account_type", require("./account_types"));
+
+    // Notification route
+    app.use("/notification", require("./notifications"));
+
+    // post likes route
+    app.use("/post_likes", require("./post_likes"));
 };

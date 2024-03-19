@@ -4,7 +4,9 @@ const { post_likes: postLikeSchema } = require("../Database/Schema");
 class postLikeModel {
 
     // Add post like
-    async addPostLike(bodyData) {
+    async addPostLike(userInfo, bodyData) {
+        
+        bodyData.user_id = userInfo?.id;
         return await postLikeSchema.create(bodyData);
     }
 

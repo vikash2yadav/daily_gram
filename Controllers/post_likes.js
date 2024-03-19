@@ -7,7 +7,7 @@ class postLikeController {
     async addPostLike(req, res) {
 
         try {
-            let data = await postLikeModel.addPostLike(req?.body);
+            let data = await postLikeModel.addPostLike(req?.userInfo, req?.body);
 
             res.handler.success(data, STATUS_MESSAGES?.POST_LIKE?.ADDED)
 

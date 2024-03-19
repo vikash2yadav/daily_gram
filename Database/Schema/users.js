@@ -18,15 +18,26 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		first_name: {
 			allowNull: false,
-			type: DataTypes.STRING(255)
+			type: DataTypes.STRING(255),
+			set(val) {
+				this.setDataValue('first_name', val.toLowerCase().replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase()));
+				this.setDataValue('full_name', `${this.getDataValue('first_name') || ''} ${this.getDataValue('last_name') || ''}`);
+			},
 		},
 		last_name: {
 			allowNull: false,
-			type: DataTypes.STRING(255)
+			type: DataTypes.STRING(255),
+			set(val) {
+				this.setDataValue('last_name', val.toLowerCase().replace(/(^\w{1})|(\s{1}\w{1})/g, match => match.toUpperCase()));
+				this.setDataValue('full_name', `${this.getDataValue('first_name') || ''} ${this.getDataValue('last_name') || ''}`);
+			},
 		},
 		full_name: {
 			allowNull: false,
-			type: DataTypes.STRING(255)
+			type: DataTypes.STRING(255),
+			get() {
+				return `${this.first_name ? this.first_name : ''} ${this.last_name ? this.last_name : ''}`;
+			},
 		},
 		email: {
 			allowNull: false,
