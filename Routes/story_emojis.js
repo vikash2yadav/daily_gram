@@ -1,19 +1,19 @@
 const router = require('express').Router();
-const emojiController = new(require('../Controllers/emojis'));
+const emojiController = new(require('../Controllers/story_emojis'));
 
-// Add emoji
+// Add story emoji
 router.route('/add').post(emojiController.addEmoji);
 
-// Update emoji
+// Update story emoji
 router.route('/update').put(emojiController.updateEmoji);
 
-// Delete emoji
+// Delete story emoji
 router.route('/delete/:id').delete(emojiController.deleteEmoji);
 
-// Get emoji by id
+// Get story emoji by id
 router.route('/:id').get(emojiController.getEmojiById);
 
-// Get all list emoji
+// Get all list story emoji
 router.route('/list').post(emojiController.getAllEmojiList);
 
 module.exports = router;

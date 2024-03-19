@@ -1,5 +1,5 @@
 const { STATUS_CODES, STATUS_MESSAGES } = require("../Config/constant");
-const { emojis: emojiSchema } = require("../Database/Schema");
+const { story_emojis: emojiSchema } = require("../Database/Schema");
 
 class emojiModel {
 

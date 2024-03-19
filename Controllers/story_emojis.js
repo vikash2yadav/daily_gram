@@ -1,5 +1,5 @@
 const { STATUS_MESSAGES, STATUS_CODES } = require("../Config/constant");
-const emojiModel = new (require("../Models/emojis"));
+const emojiModel = new (require("../Models/story_emojis"));
 
 class emojiController {
 
