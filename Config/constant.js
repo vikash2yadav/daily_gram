@@ -60,7 +60,8 @@ exports.STATUS_MESSAGES = {
         USERNAME: "Username is already exist!",
         TITLE: "This title already exist",
         EMAIL_ALREADY_EXISTS: "This email is already registered.!",
-        ROLE: 'Role is already exist!'
+        ROLE: 'Role is already exist!',
+        EMAIL_SUBSCRIBER: 'Email is already in our subscriber list.'
     },
 
     NOT_FOUND: {
@@ -80,7 +81,8 @@ exports.STATUS_MESSAGES = {
         SAVED_POST: 'Saved post is not available in our system!',
         POST_SHARE: "This data is not found.",
         NOTIFICATION: 'Notification is not available in our system.',
-        EMOJI: 'Emoji is not available in our system.'
+        EMOJI: 'Emoji is not available in our system.',
+        EMAIL_SUBSCRIBER: 'Email is not found in our system.'
     },
     PASSWORD: {
         MISMATCH: "Provided password do not match",
@@ -119,6 +121,11 @@ exports.STATUS_MESSAGES = {
         ADDED: "Account type has been added successfully.",
         UPDATED: "Account type been updated successfully.",
         DELETED: "Account type been deleted successfully.",
+    },
+    EMAIL_SUBSCRIBER:{
+        ADDED: "Email added in subscribers list.",
+        UPDATED: "Email updated successfully.",
+        DELETED: "Email removed from our subscribers list.",
     },
     POST_REPORT:{
         ADDED: "Report has been added successfully.",

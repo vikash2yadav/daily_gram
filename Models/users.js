@@ -463,11 +463,11 @@ class userModel {
             let checkStatus = await userSchema.findOne({
                 where: {
                     id: id,
-                    status: STATUS.ACTIVE
+                    status: STATUS.INACTIVE
                 }
             })
 
-            if (!checkStatus) {
+            if (checkStatus) {
                 return {
                     status: STATUS_CODES.NOT_FOUND,
                     message: STATUS_MESSAGES.USER.INACTIVE

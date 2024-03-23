@@ -14,4 +14,7 @@ module.exports = (app) => {
 
     // post likes route
     app.use("/post_likes", require("./post_likes"));
+
+    // email subscriber route
+    app.use("/email_subscriber", require("./email_subscribers"));
 };
